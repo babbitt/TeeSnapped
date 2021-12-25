@@ -1,168 +1,185 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="Book a teetime up to 8 days in advance">
-        <meta name="author" content="Joe Babbitt">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <style>
-            html, body {
-                height: 100%;
-                width: 100%;
-            }
-            #bg-image {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                z-index: -1;
-                filter: blur(5px);
-                background-image: url("https://images.ctfassets.net/56u5qdsjym8c/3b96eGN9KodYhSYaBsYpI/261024d195ef6803bca98d4e10fd2793/Blue-Doral-Monster-Hero.jpg?fl=progressive&q=80");
-            }
-        </style>
-    </head>
-    <body>
-        <div id="bg-image"></div>
-        <div class="flex w-full h-full">
-            <div class="mx-auto my-auto bg-blue-300 p-4 rounded-lg max-w-md	drop-shadow-2xl">
-              <h1 class="text-lg">
-              <b>TeeSnap</b>ped
-              </h1>
-              <div class="bg-blue-200 rounded-lg p-2 m-4">
-                <h4 class="text-md">
-                  How it works
-                </h4>
-                <p class="text-sm">
-                  You enter the information below and TeeSnapped will generate a link to take you directy to a booking for the earliest tee time on that given day, no waiting around required. This is possible due to an oversight in the teesnap website which lists reservations in the future and does not stop people from booking reservations far out in advance.
-                </p>
-                <div class="bg-yellow-200 flex p-1 m-1 rounded-md">
-                    <div class="my-auto p-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                        </svg>
-                    </div>
-                    <div class="my-auto">
-                        <p class="text-xs">
-                            You cannot book more than 8 days out in advance
-                        </p>
-                    </div>
-                </div>
-              </div>
-              <div class="rounded-lg rounded-b-none bg-blue-100 p-2">
-                <div class="flex flex-col space-y-2">
-                  <input class="p-2 rounded-md" type="text" id="subdomain" placeholder="Subdomain"/>
-                  <input class="p-2 rounded-md" type="number" id="courseid" placeholder="Course Id"/>
-                  <input class="p-2 rounded-md" type="number" id="holes" placeholder="Holes"/>
-                  <input class="p-2 rounded-md" type="number" id="players" placeholder="Players"/>
-                  <input class="p-2 rounded-md" type="date" id="date"/>
-                  <button id="generatebutton" onClick="javascript:Bookmark()">
-                  Generate Link
-                  </button>
-                </div>
-              </div>
-              <div class="bg-blue-400 rounded-b-lg transition-all text-white text-center p-4" id="daLink">
-              </div>
-            </div>
-        </div>
-    </body>
-    <script>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="Book a teetime up to 8 days in advance">
+		<meta name="author" content="Joe Babbitt">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://cdn.tailwindcss.com"></script>
+		<style>
+			html, body {
+				height: 100%;
+				width: 100%;
+			}
+			#bg-image {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				z-index: -1;
+				filter: blur(5px);
+				background-size: cover;
+				background-image: url("https://images.ctfassets.net/56u5qdsjym8c/3b96eGN9KodYhSYaBsYpI/261024d195ef6803bca98d4e10fd2793/Blue-Doral-Monster-Hero.jpg?fl=progressive&q=80");
+			}
+		</style>
+	</head>
+	<body>
+		<div id="bg-image"></div>
+		<div class="flex w-full h-full">
+			<div class="mx-auto my-auto bg-blue-300 p-4 rounded-lg max-w-md	drop-shadow-2xl">
+			  <h1 class="text-lg">
+			  <b>TeeSnap</b>ped
+			  </h1>
+			  <div class="bg-blue-200 rounded-lg p-2 m-4">
+				<h4 class="text-md">
+				  How it works
+				</h4>
+				<p class="text-sm">
+				  <ol class="text-sm list-decimal mx-10">
+					<li>
+						Enter in course information and desired date
+					</li>
+					<li>
+						Add bookmark to your browser
+					</li>
+					<li>
+						Go to your courses booking page
+					</li>
+					<li>
+						Click on your newly created bookmark
+					</li>
+					<li>
+						Book as normal
+					</li>
+						  
+				  </ol>
+				</p>
+				<div class="bg-yellow-200 flex p-1 m-1 rounded-md">
+					<div class="my-auto p-2">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+						</svg>
+					</div>
+					<div class="my-auto">
+						<p class="text-xs">
+							You cannot book further out more than one day than is publicly available
+						</p>
+					</div>
+				</div>
+			  </div>
+			  <div class="rounded-lg rounded-b-none bg-blue-100 p-2">
+				<div class="flex flex-col space-y-2">
+				  <input class="p-2 rounded-md" type="text" id="subdomain" placeholder="Subdomain"/>
+				  <input class="p-2 rounded-md" type="number" id="courseid" placeholder="Course Id"/>
+				  <input class="p-2 rounded-md" type="number" id="holes" placeholder="Holes"/>
+				  <input class="p-2 rounded-md" type="number" id="players" placeholder="Players"/>
+				  <input class="p-2 rounded-md" type="date" id="date"/>
+				  <button id="generatebutton" onClick="javascript:Bookmark()">
+				  Generate Link
+				  </button>
+				</div>
+			  </div>
+			  <div class="bg-blue-400 rounded-b-lg transition-all text-white text-center p-4" id="daLink">
+			  </div>
+			</div>
+		</div>
+	</body>
+	<script>
 
-        window.onload = () => {
-            const params = new URLSearchParams(window.location.search);
-            document.querySelector("#subdomain").value = params.get('subdomain') ? params.get('subdomain') : "";
-            document.querySelector("#courseid").value = params.get('course') ? params.get('course') : "";
-            document.querySelector("#holes").value = params.get('holes') ? params.get('holes') : "";
-            document.querySelector("#players").value = params.get('players') ? params.get('players') : "";
-            if (params.get('manual')) {
-                console.log('test')
-                document.querySelector("#generatebutton").setAttribute('onClick', "javascript:processRequest()");
-            }
-        }
+		window.onload = () => {
+			const params = new URLSearchParams(window.location.search);
+			document.querySelector("#subdomain").value = params.get('subdomain') ? params.get('subdomain') : "";
+			document.querySelector("#courseid").value = params.get('course') ? params.get('course') : "";
+			document.querySelector("#holes").value = params.get('holes') ? params.get('holes') : "";
+			document.querySelector("#players").value = params.get('players') ? params.get('players') : "";
+			if (params.get('manual')) {
+				console.log('test')
+				document.querySelector("#generatebutton").setAttribute('onClick', "javascript:processRequest()");
+			}
+		}
 
-        const getSoonestTime = (teeTimes, subdomain, course_id, holes, players) => {
-            for (const i in teeTimes) {
-                const tee = teeTimes[i]
-                for (const j in tee.teeOffSections) {
-                    if (!tee.teeOffSections[j].bookings && tee.teeOffSections[j].isHeld == false) {
-                    const teeOff = tee.teeOffSections[j].teeOff
-                    const teeTime = tee.teeTime
-                    return {teeOff, teeTime}
-                    }
-                }
-            }
-        }
+		const getSoonestTime = (teeTimes, subdomain, course_id, holes, players) => {
+			for (const i in teeTimes) {
+				const tee = teeTimes[i]
+				for (const j in tee.teeOffSections) {
+					if (!tee.teeOffSections[j].bookings && tee.teeOffSections[j].isHeld == false) {
+					const teeOff = tee.teeOffSections[j].teeOff
+					const teeTime = tee.teeTime
+					return {teeOff, teeTime}
+					}
+				}
+			}
+		}
 
-        const generateLink = (subdomain, course_id, holes, players, d) => {
-        const finalLink = `https://${subdomain}.teesnap.net/reservation?addons=off&course=${course_id}&holes=${holes}&players=${players}&teeOffSection=${d.teeOff}&teeTime=${d.teeTime}`
+		const generateLink = (subdomain, course_id, holes, players, d) => {
+		const finalLink = `https://${subdomain}.teesnap.net/reservation?addons=off&course=${course_id}&holes=${holes}&players=${players}&teeOffSection=${d.teeOff}&teeTime=${d.teeTime}`
 
-        return finalLink
-        }
+		return finalLink
+		}
 
-        const processRequest = () => {
-            let subdomain = document.querySelector('#subdomain').value
-            let course_id = document.querySelector('#courseid').value
-            let holes = document.querySelector('#holes').value
-            let players = document.querySelector('#players').value
-            let date = document.querySelector('#date').value
-            
-            scheduleLink = `https://${subdomain}.teesnap.net/customer-api/teetimes-day?course=${course_id}&date=${date}&players=${players}&holes=${holes}&addons=off`
-            document.querySelector("#daLink").innerHTML = `<a class="underline" href="${scheduleLink}">Click this link, copy the entire page and paste it below</a><br><textarea id="daData" class="text-black"></textarea><br><button class="p-1 bg-blue-200 m-2 text-black rounded-md" onclick="javascript:processDaData()">Process data</button>`
-        }
+		const processRequest = () => {
+			let subdomain = document.querySelector('#subdomain').value
+			let course_id = document.querySelector('#courseid').value
+			let holes = document.querySelector('#holes').value
+			let players = document.querySelector('#players').value
+			let date = document.querySelector('#date').value
+			
+			scheduleLink = `https://${subdomain}.teesnap.net/customer-api/teetimes-day?course=${course_id}&date=${date}&players=${players}&holes=${holes}&addons=off`
+			document.querySelector("#daLink").innerHTML = `<a class="underline" href="${scheduleLink}">Click this link, copy the entire page and paste it below</a><br><textarea id="daData" class="text-black"></textarea><br><button class="p-1 bg-blue-200 m-2 text-black rounded-md" onclick="javascript:processDaData()">Process data</button>`
+		}
 
-        const processDaData = () => {
-            data = document.querySelector("#daData").value
-            processJson(JSON.parse(data))
-        }
+		const processDaData = () => {
+			data = document.querySelector("#daData").value
+			processJson(JSON.parse(data))
+		}
 
-        const processJson = (json) => {
-        let subdomain = document.querySelector('#subdomain').value
-        let course_id = document.querySelector('#courseid').value
-        let holes = document.querySelector('#holes').value
-        let players = document.querySelector('#players').value
-        let date = document.querySelector('#date').value
-        console.log(json)
-            let teeTimes = json.teeTimes.teeTimes
-        
-        const d = getSoonestTime(teeTimes, subdomain, course_id, holes, players)
-        
-        const link = generateLink(subdomain, course_id, holes, players, d)
-        console.log(date)
-        console.log(link)
-        document.querySelector("#daLink").innerHTML = `<p>Click this link to book</p><br><a href="${link}">Reservation Link</a>`
-        }
+		const processJson = (json) => {
+		let subdomain = document.querySelector('#subdomain').value
+		let course_id = document.querySelector('#courseid').value
+		let holes = document.querySelector('#holes').value
+		let players = document.querySelector('#players').value
+		let date = document.querySelector('#date').value
+		console.log(json)
+			let teeTimes = json.teeTimes.teeTimes
+		
+		const d = getSoonestTime(teeTimes, subdomain, course_id, holes, players)
+		
+		const link = generateLink(subdomain, course_id, holes, players, d)
+		console.log(date)
+		console.log(link)
+		document.querySelector("#daLink").innerHTML = `<p>Click this link to book</p><br><a href="${link}">Reservation Link</a>`
+		}
 
-        const Bookmark = () => {
-            let subdomain = document.querySelector('#subdomain').value
-            let course_id = document.querySelector('#courseid').value
-            let holes = document.querySelector('#holes').value
-            let players = document.querySelector('#players').value
-            let date = document.querySelector('#date').value
+		const Bookmark = () => {
+			let subdomain = document.querySelector('#subdomain').value
+			let course_id = document.querySelector('#courseid').value
+			let holes = document.querySelector('#holes').value
+			let players = document.querySelector('#players').value
+			let date = document.querySelector('#date').value
 
 
-            const string = ` function getTee(){
-                let teeOff = null;
-                let teeTime = null;
-                fetch("https://${subdomain}.teesnap.net/customer-api/teetimes-day?course=${course_id}&date=${date}&players=${players}&holes=${holes}&addons=off").then(response => response.json()).then((json) => {
-                    console.log(json);
-                    let teeTimes = json.teeTimes.teeTimes;
-                    function getTime(){
-                        for (const i in teeTimes) {
-                            const tee = teeTimes[i];
-                            for (const j in tee.teeOffSections) {
-                                if (!tee.teeOffSections[j].bookings && tee.teeOffSections[j].isHeld == false) {
-                                teeOff = tee.teeOffSections[j].teeOff;
-                                teeTime = tee.teeTime;
-                                return;
-                                }
-                            }
-                        }
-                    }getTime();
-                    window.location = "https://${subdomain}.teesnap.net/reservation?addons=off&course=${course_id}&holes=${holes}&players=${players}&teeOffSection="+teeOff+"&teeTime="+teeTime;
-                })
-            };getTee();
-            `
-            console.log(string)
-            document.querySelector("#daLink").innerHTML = `<p>To book the first tee-time for this date:</p><ul class="list-disc w-72 mx-auto"><li>Drag the reservation tool to your bookmarks</li><li>Go to <a class="underline" href="https://${subdomain}.teesnap.net">${subdomain}.teesnap.net</a></li><li>Click on the newly created bookmark</li></ul><br><a class="underline" href='javascript:${string}'>Reservation Tool ${date}</a>`
+			const string = ` function getTee(){
+				let teeOff = null;
+				let teeTime = null;
+				fetch("https://${subdomain}.teesnap.net/customer-api/teetimes-day?course=${course_id}&date=${date}&players=${players}&holes=${holes}&addons=off").then(response => response.json()).then((json) => {
+					let teeTimes = json.teeTimes.teeTimes;
+					function getTime(){
+						for (const i in teeTimes) {
+							const tee = teeTimes[i];
+							for (const j in tee.teeOffSections) {
+								if (!tee.teeOffSections[j].bookings && tee.teeOffSections[j].isHeld == false) {
+								teeOff = tee.teeOffSections[j].teeOff;
+								teeTime = tee.teeTime;
+								return;
+								}
+							}
+						}
+					}getTime();
+					window.location = "https://${subdomain}.teesnap.net/reservation?addons=off&course=${course_id}&holes=${holes}&players=${players}&teeOffSection="+teeOff+"&teeTime="+teeTime;
+				})
+			};getTee();
+			`
+			console.log(string)
+			document.querySelector("#daLink").innerHTML = `<p>To book the first tee-time for this date:</p><ul class="list-disc w-72 mx-auto"><li>Drag the reservation tool to your bookmarks</li><li>Go to <a class="underline" href="https://${subdomain}.teesnap.net">${subdomain}.teesnap.net</a></li><li>Click on the newly created bookmark</li></ul><br><a class="underline" href='javascript:${string}'>Reservation Tool ${date}</a>`
 
-        }
-    </script>
+		}
+	</script>
 </html>
